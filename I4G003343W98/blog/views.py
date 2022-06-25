@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from dataclasses import field
+from re import template
+from django.views.generic.edit import CreateView
+from .models import Post
 
-# Create your views here.
+model = Post
+
+fields = ['title',
+'description'
+]
+template_name = 'home.html'

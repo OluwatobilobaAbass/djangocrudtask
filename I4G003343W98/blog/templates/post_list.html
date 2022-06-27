@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 {% extends 'base.html' %}
 <!--prettier-ignore-->
 {% block content %}
 {% for film in film_list %}
     {% for colname in film.column_set.all  %}
+=======
+{% extends 'base.html' %} {% block content %} {% for film in film_list %} {% for
+colname in film.column_set.all %}
+>>>>>>> a7319c70caa8f78d046d12419014e5225e76aa05
 <p>{{colname}}</p>
 {% endfor %} {% endfor %}
 

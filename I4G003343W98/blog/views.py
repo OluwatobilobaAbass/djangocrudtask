@@ -1,16 +1,32 @@
-from dataclasses import field
-from re import template
-from django.views.generic.edit import CreateView
-from django.views.generic.list import ListView
+from django.views import generic
 from .models import Post
+from django.urls import reverse_lazy
 
-model = Post
 
-fields = ['title',
-'description'
-]
-template_name = 'base.html'
+# Create your views here.
+class PostDetailView(generic.DetailView):
+    model = Post
+    template_name = 'post_detail.html'
 
-class PostListView(ListView):
-    model: Post
-    template_name = 'list.html'
+class PostListView(generic.ListView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy('blog:all')
+    template_name = 'post_list.html'
+
+class PostCreateView(generic.CreateView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy('blog:all')
+    template_name = 'post_form.html'
+
+class PostUpdateView(generic.UpdateView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy('blog:all')
+    template_name = 'post_form.html'
+class PostDeleteView(generic.DeleteView):
+    model = Post
+    fields = "__all__"
+    success_url  = reverse_lazy('blog:all')
+    template_name = 'post_confirm_delete.html'
